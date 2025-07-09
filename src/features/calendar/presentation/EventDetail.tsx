@@ -6,7 +6,7 @@ import { StackCalendarParamList } from '../../../navigation/Calendar/types/types
 import EventDetailView from '../../shared/organisms/Calendar/EventDetail/EventDetail';
 import { CalendarViewModel } from './viewmodel/CalendarViewModel';
 import EventFormModal from '../../shared/organisms/Calendar/ModalEvent/ModalEvent';
-import { ContactViewModel } from '../../contactos/presentation/viewmodel/ContactViewModel';
+import { useContactViewModel } from '../../contactos/presentation/viewmodel/ContactViewModel';
 import { CalendarEventModel } from '../../calendar/data/models/CalendarModel';
 import { CalendarEvent } from '../domain/entities/event';
 
@@ -27,7 +27,7 @@ export default function EventDetailScreen() {
     fetchEvents,
   } = CalendarViewModel();
 
-  const { contacts, isLoading: contactsLoading, error: contactsError } = ContactViewModel();
+  const { contacts, isLoading: contactsLoading, error: contactsError } = useContactViewModel();
 
   const [isModalVisible, setIsModalVisible] = useState(false);
 

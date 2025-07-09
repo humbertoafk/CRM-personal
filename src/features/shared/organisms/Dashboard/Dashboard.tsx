@@ -60,7 +60,7 @@ const styles = StyleSheet.create({
   section: {
     gap: 12,
     marginBottom: 16,
-    backgroundColor: '#1E1E1E',
+    backgroundColor: '#262626',
     padding: 12,
     borderRadius: 10,
   },

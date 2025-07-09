@@ -10,12 +10,12 @@ import CalendarPanel from '../../shared/organisms/Calendar/CalendarPanel/Calenda
 import { CalendarViewModel } from './viewmodel/CalendarViewModel';
 import { CalendarEvent } from '../domain/entities/event';
 import EventFormModal from '../../shared/organisms/Calendar/ModalEvent/ModalEvent';
-import { ContactViewModel } from '../../contactos/presentation/viewmodel/ContactViewModel';
+import { useContactViewModel } from '../../contactos/presentation/viewmodel/ContactViewModel';
 import { useNotificationViewModel } from '../../notifications/presentation/viewmodels/notificationViewModel';
 
 export default function CalendarScreen() {
   const { events, isLoading, error, createEvent, fetchEvents } = CalendarViewModel();
-  const { contacts, isLoading: contactsLoading, error: contactsError } = ContactViewModel();
+  const { contacts, isLoading: contactsLoading, error: contactsError } = useContactViewModel();
   const { createNotification } = useNotificationViewModel();
   const [isModalVisible, setIsModalVisible] = useState(false);
 

@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { View, StyleSheet } from 'react-native';
 import Dashboard from '../../shared/organisms/Dashboard/Dashboard';
 import { CalendarViewModel } from '../../calendar/presentation/viewmodel/CalendarViewModel';
-import { ContactViewModel } from '../../contactos/presentation/viewmodel/ContactViewModel';
+import { useContactViewModel } from '../../contactos/presentation/viewmodel/ContactViewModel';
 import { useNavigation } from '@react-navigation/native';
 import { DrawerNavProp } from '../../../navigation/types/Drawer';
 
@@ -17,7 +17,7 @@ export default function HomeScreen() {
   const navigation = useNavigation<DrawerNavProp>();
 
   const { events, fetchEvents } = CalendarViewModel();
-  const { contacts, fetchContacts } = ContactViewModel();
+  const { contacts, fetchContacts } = useContactViewModel();
 
   const [loading, setLoading] = useState(true);
 

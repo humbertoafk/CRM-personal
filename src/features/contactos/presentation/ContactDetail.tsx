@@ -3,7 +3,7 @@ import { View, StyleSheet, ActivityIndicator, Text } from 'react-native';
 import { RouteProp, useRoute } from '@react-navigation/native';
 import { StackContactParamList } from '../../../navigation/Contact/types/types';
 import ContactDetailView from '../../shared/organisms/Contact/ContactDetail/ContactDetail';
-import { ContactViewModel } from './viewmodel/ContactViewModel';
+import { useContactViewModel } from './viewmodel/ContactViewModel';
 
 type ContactDetailRouteProp = RouteProp<StackContactParamList , 'contactDetail'>;
 
@@ -16,7 +16,7 @@ export default function ContactDetailScreen() {
     selectedContact,
     isLoading,
     error,
-  } = ContactViewModel();
+  } = useContactViewModel();
 
   useEffect(() => {
     fetchContactById(id);

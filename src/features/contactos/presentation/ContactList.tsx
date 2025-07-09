@@ -1,15 +1,26 @@
-import React from 'react';
-import { View, StyleSheet, ActivityIndicator, Text } from 'react-native';
+import React, { useCallback } from 'react';
+import { View, StyleSheet, ActivityIndicator, Text, Button, Alert, } from 'react-native';
 import ContactList from '../../shared/organisms/Contact/ContactList/ContactList';
-import { ContactViewModel } from './viewmodel/ContactViewModel';
+import { useContactViewModel } from './viewmodel/ContactViewModel';
+import { useNavigation, useFocusEffect } from '@react-navigation/native';
 
 export default function ContactListScreen() {
   const {
     contacts,
     isLoading,
     error,
+    deleteContact,
     fetchContacts,
-  } = ContactViewModel();
+  } = useContactViewModel();
+
+  const navigation = useNavigation();
+
+  // Aquí se refresca la lista al volver desde otra pantalla (Por fin)
+  useFocusEffect(
+    useCallback(() => {
+      fetchContacts();
+    }, [])
+  );
 
   if (isLoading) {
     return (
@@ -29,6 +40,12 @@ export default function ContactListScreen() {
 
   return (
     <View style={styles.container}>
+      <View style={styles.buttons}>
+        <Button
+          title="Nuevo Contacto"
+          onPress={() => navigation.navigate('createContact')}
+        />
+      </View>
       <ContactList contacts={contacts} />
     </View>
   );
@@ -40,14 +57,18 @@ const styles = StyleSheet.create({
     padding: 16,
     backgroundColor: '#121212',
   },
+  buttons: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    marginBottom: 16,
+  },
   loadingContainer: {
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: '#121212',
   },
   errorText: {
+    color: 'red',
     fontSize: 16,
-    color: '#FF6B6B',
   },
 });

@@ -20,6 +20,7 @@
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#ffffff"
       },
+      "permissions": ["NOTIFICATIONS", "READ_CALENDAR", "WRITE_CALENDAR"],
       "edgeToEdgeEnabled": true,
       "package": "com.asdhumberto.crm"
     },

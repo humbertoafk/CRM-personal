@@ -12,11 +12,31 @@ export class ContactService {
     const { data } = await Contacts.getContactsAsync({
       fields: [Contacts.Fields.Name, Contacts.Fields.Image],
     });
-    console.log('Datos crudos desde expo-contacts:', data);
 
     return data
-    .filter(contact => contact.name)
-    .map(contact => ({
+      .filter(contact => contact.name)
+      .map(contact => ({
+        id: contact.id ?? '',
+        name: contact.name ?? 'Sin nombre',
+        firstName: contact.firstName ?? '',
+        lastName: contact.lastName ?? '',
+        contactType: contact.contactType ?? '',
+        imageAvailable: contact.imageAvailable ?? false,
+        imageUri: contact.image?.uri ?? undefined,
+        isFavorite: contact.isFavorite ?? false,
+        lookupKey: (contact as any).lookupKey ?? '',
+      }));
+  }
+
+  async getContactById(id: string): Promise<ContactModel | null> {
+    const { data } = await Contacts.getContactsAsync({
+      fields: [Contacts.Fields.Name, Contacts.Fields.Image],
+    });
+
+    const contact = data.find(c => c.id === id);
+    if (!contact) return null;
+
+    return {
       id: contact.id ?? '',
       name: contact.name ?? 'Sin nombre',
       firstName: contact.firstName ?? '',
@@ -26,51 +46,36 @@ export class ContactService {
       imageUri: contact.image?.uri ?? undefined,
       isFavorite: contact.isFavorite ?? false,
       lookupKey: (contact as any).lookupKey ?? '',
-    }));
+    };
   }
 
- async getContactById(id: string): Promise<ContactModel | null> {
-  const { data } = await Contacts.getContactsAsync({
-    fields: [Contacts.Fields.Name, Contacts.Fields.Image],
-  });
+  async createContact(contact: ContactModel): Promise<string> {
+    const permission = await Contacts.requestPermissionsAsync();
+    if (permission.status !== 'granted') {
+      throw new Error('Permiso denegado para crear contacto.');
+    }
 
-  const contact = data.find(c => c.id === id);
+    const contactId = await Contacts.addContactAsync({
+      [Contacts.Fields.FirstName]: contact.firstName,
+      [Contacts.Fields.LastName]: contact.lastName,
+      [Contacts.Fields.Name]: contact.name,
+    });
 
-  if (!contact) return null;
+    return contactId;
+  }
 
- return {
-  id: contact.id ?? '',
-  name: contact.name ?? 'Sin nombre',
-  firstName: (contact as any).firstName ?? 'No registrado',
-  lastName: (contact as any).lastName ?? 'No registrado',
-  contactType: (contact as any).contactType ?? 'Desconocido',
-  imageAvailable: contact.imageAvailable ?? false,
-  imageUri: contact.image?.uri ?? 'https://example.com/default-image.png',
-  isFavorite: (contact as any).isFavorite ?? false,
-  lookupKey: (contact as any).lookupKey ?? 'Sin clave',
-};
-}
+  async updateContact(contact: ContactModel): Promise<void> {
+    if (!contact.id) throw new Error('El contacto no tiene ID.');
 
-  // Este metodo se habilitará para poder crear un contacto en un futuro
-  // async createContact(contact: ContactModel): Promise<void> {
-  //   await Contacts.addContactAsync({
-  //       [Contacts.Fields.Name]: contact.name,
-  //       contactType: 'company'
-  //   });
-  // }
+    await Contacts.updateContactAsync({
+      id: contact.id,
+      [Contacts.Fields.FirstName]: contact.firstName,
+      [Contacts.Fields.LastName]: contact.lastName,
+      [Contacts.Fields.Name]: contact.name,
+    });
+  }
 
-  //   async updateContact(contact: ContactModel): Promise<void> {
-  //       //esto es para vlidar si es indefinido
-  //   if (!contact.id) {
-  //       throw new Error('El contacto debe tener un ID para poder actualizarse.');
-  //   }
-  //   await Contacts.updateContactAsync({
-  //       id: contact.id, // Ahora Typescript sabe que no es undefined
-  //       [Contacts.Fields.Name]: contact.name,
-  //   });
-  // }
-
-  // async deleteContact(id: string): Promise<void> {
-  //   await Contacts.removeContactAsync(id);
-  // }
+  async deleteContact(id: string): Promise<void> {
+    await Contacts.removeContactAsync(id);
+  }
 }

@@ -98,7 +98,6 @@ export async function getAllEventsFromDB(): Promise<CalendarEventModel[]> {
 
 export async function getEventByIdFromDB(id: string): Promise<CalendarEventModel | null> {
   try {
-     Cambiamos getAsync por getFirstAsync
     const result = await db.getFirstAsync(
       `SELECT * FROM events WHERE id = ?`,
       [id]

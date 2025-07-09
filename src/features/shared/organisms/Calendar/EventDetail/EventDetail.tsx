@@ -5,7 +5,7 @@ import Button from '../../../atoms/Button/Button';
 import Text from '../../../atoms/Text/Text';
 import { useNavigation } from '@react-navigation/native';
 import { CalendarEvent } from '../../../../calendar/domain/entities/event';
-import { ContactViewModel } from '../../../../contactos/presentation/viewmodel/ContactViewModel';
+import { useContactViewModel } from '../../../../contactos/presentation/viewmodel/ContactViewModel';
 
 interface EventDetailViewProps {
   event: CalendarEvent;
@@ -13,7 +13,7 @@ interface EventDetailViewProps {
 
 export default function EventDetailView({ event }: EventDetailViewProps) {
   const navigation = useNavigation();
-  const { fetchContactById, selectedContact, isLoading } = ContactViewModel();
+  const { fetchContactById, selectedContact, isLoading } = useContactViewModel();
   const [contactName, setContactName] = useState<string>('Cargando...');
 
   useEffect(() => {
