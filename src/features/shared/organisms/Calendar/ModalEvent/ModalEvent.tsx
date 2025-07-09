@@ -119,7 +119,8 @@ const EventFormModal = ({
                 style={styles.input}
                 value={title}
                 onChangeText={setTitle}
-                placeholder="Ej. Reunión de equipo"
+                placeholder="Fiesta o reunión de equipo"
+                placeholderTextColor="#AAAAAA"
               />
 
               <Text style={styles.label}>Ubicación</Text>
@@ -127,7 +128,8 @@ const EventFormModal = ({
                 style={styles.input}
                 value={location}
                 onChangeText={setLocation}
-                placeholder="Ej. Sala 4 o Zoom"
+                placeholder="Calle o referencias"
+                placeholderTextColor="#AAAAAA"
               />
 
               <Text style={styles.label}>Notas</Text>
@@ -135,11 +137,12 @@ const EventFormModal = ({
                 style={[styles.input, styles.multilineInput]}
                 value={notes}
                 onChangeText={setNotes}
-                placeholder="Detalles adicionales..."
+                placeholder="Describe el evento"
                 multiline
+                placeholderTextColor="#AAAAAA"
               />
 
-              <Text style={styles.label}>Inicio</Text>
+              <Text style={styles.label}>Inicio del evento</Text>
               <Button
                 title={startDate.toLocaleString()}
                 onPress={() => {
@@ -148,7 +151,7 @@ const EventFormModal = ({
                 }}
               />
 
-              <Text style={styles.label}>Fin</Text>
+              <Text style={styles.label}>Fin del evento</Text>
               <Button
                 title={endDate.toLocaleString()}
                 onPress={() => {
@@ -157,7 +160,7 @@ const EventFormModal = ({
                 }}
               />
 
-              <Text style={styles.label}>Contacto</Text>
+              <Text style={styles.label}>Asignar contacto</Text>
               <DropDownPicker
                 open={dropdownOpen}
                 value={contactId}
@@ -166,6 +169,8 @@ const EventFormModal = ({
                 setValue={setContactId}
                 setItems={setDropdownItems}
                 placeholder="Selecciona un contacto"
+                placeholderStyle={{ color: '#AAAAAA' }}
+                textStyle={{ color: '#FFFFFF' }}
                 style={styles.dropdown}
                 dropDownContainerStyle={styles.dropdownContainer}
                 listMode="SCROLLVIEW"

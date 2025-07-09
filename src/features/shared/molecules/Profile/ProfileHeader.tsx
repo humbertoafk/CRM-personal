@@ -23,6 +23,7 @@ const styles = StyleSheet.create({
   container: {
     alignItems: 'center',
     gap: 8,
+    margin: 15,
   },
   name: {
     fontSize: 20,

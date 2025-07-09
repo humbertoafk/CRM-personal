@@ -73,7 +73,7 @@ export default function EventDetailScreen() {
     attendees: [],
   });
 
-  if (isLoading) return <ActivityIndicator size="large" color="#007AFF" />;
+  if (isLoading) return <ActivityIndicator size="large" color="#00674F" />;
   if (error) return <Text style={styles.errorText}>{error}</Text>;
   if (!selectedEvent) return <Text style={styles.errorText}>No se encontró el evento.</Text>;
 

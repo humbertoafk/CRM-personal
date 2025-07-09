@@ -25,7 +25,7 @@ export default function Dashboard({ contacts, events, notifications,}: Dashboard
   return (
     <ScrollView contentContainerStyle={styles.container}>
       <View style={styles.section}>
-        <Text style={styles.sectionTitle}>Contactos destacados:</Text>
+        <Text style={styles.sectionTitle}>Contactos destacados</Text>
         {contacts.map((contact, index) => (
           <ContactCard key={index} {...contact} />
         ))}
@@ -34,7 +34,7 @@ export default function Dashboard({ contacts, events, notifications,}: Dashboard
         </Button>
       </View>
       <View style={styles.section}>
-        <Text style={styles.sectionTitle}>Próximos eventos:</Text>
+        <Text style={styles.sectionTitle}>Eventos próximos</Text>
         {events.map((event, index) => (
           <EventCard key={index} {...event} />
         ))}

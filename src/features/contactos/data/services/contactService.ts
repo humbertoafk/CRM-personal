@@ -29,9 +29,6 @@ export class ContactService {
     }));
   }
 
-  //esto lo implementamos de esta manera, puesto que expo-comntacts, no tiene un 
-  //punto exacto para consulta uno en especifico, por ello, se opta por consultar la lista y filtratlo segpun el id 
-  //y con ello simplemente se regresa ese mismo
  async getContactById(id: string): Promise<ContactModel | null> {
   const { data } = await Contacts.getContactsAsync({
     fields: [Contacts.Fields.Name, Contacts.Fields.Image],

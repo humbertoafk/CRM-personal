@@ -1,8 +1,6 @@
 import React from 'react';
 import { StyleProp, ViewStyle } from 'react-native';
-// Importo las propiedades personalizadas para el icono
 import { IconProps } from './types/types';
-// Uso los íconos de la librería MaterialIcons (de Expo)
 import { MaterialIcons } from '@expo/vector-icons';
 
 // Componente Icon que muestra un ícono configurable

@@ -24,7 +24,7 @@ export default function CalendarPanel({ events: propEvents, isLoading, error }: 
   if (isLoading) {
     return (
       <View style={styles.centerContent}>
-        <ActivityIndicator size="large" color="#007AFF" />
+        <ActivityIndicator size="large" color="#00674F" />
         <Text style={styles.loadingText}>Cargando eventos...</Text>
       </View>
     );
@@ -40,7 +40,7 @@ export default function CalendarPanel({ events: propEvents, isLoading, error }: 
 
   return (
     <View style={styles.container}>
-      <Text style={styles.headerTitle}>📅 Próximos Eventos</Text>
+      <Text style={styles.headerTitle}>Eventos agendados</Text>
       {events.length === 0 ? (
         <Text style={styles.emptyText}>No hay eventos disponibles.</Text>
       ) : (
@@ -69,6 +69,11 @@ const styles = StyleSheet.create({
     paddingHorizontal: 20,
     paddingTop: 24,
     backgroundColor: '#121212',
+    margin: 16,
+    padding: 20,
+    borderRadius: 16,
+    borderWidth: 1,
+    borderColor: '#2A2A2A',
   },
   headerTitle: {
     fontSize: 24,

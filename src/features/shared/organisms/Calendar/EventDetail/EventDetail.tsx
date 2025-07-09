@@ -40,7 +40,7 @@ export default function EventDetailView({ event }: EventDetailViewProps) {
 
         <View style={styles.content}>
           <View style={styles.detailCard}>
-            <Text style={styles.sectionTitle}>Información del Evento</Text>
+            <Text style={styles.sectionTitle}>Detalles del Evento</Text>
 
             <View style={styles.detailRow}>
               <Text style={styles.detailLabel}>Fecha:</Text>
@@ -94,42 +94,41 @@ const styles = StyleSheet.create({
   },
   detailCard: {
     backgroundColor: '#1E1E1E',
-    borderRadius: 12,
-    padding: 20,
-    shadowColor: '#000000',
-    shadowOffset: { width: 0, height: 2 },
-    shadowOpacity: 0.2,
-    shadowRadius: 4,
-    elevation: 3,
+    borderRadius: 16,
+    padding: 24,
+    borderLeftWidth: 4,
+    borderLeftColor: '#AAAAAA',
   },
   sectionTitle: {
-    fontSize: 20,
-    fontWeight: '600',
-    color: '#03DAC6',
-    marginBottom: 16,
+    fontSize: 22,
+    fontWeight: '700',
+    color: '#AAAAAA',
+    marginBottom: 20,
+    textAlign: 'center',
   },
   detailRow: {
     flexDirection: 'row',
     justifyContent: 'space-between',
-    marginBottom: 8,
+    marginBottom: 12,
+    alignItems: 'center',
   },
   detailLabel: {
     fontSize: 16,
     color: '#AAAAAA',
-    width: '40%',
+    width: '45%',
   },
   detailValue: {
     fontSize: 16,
     fontWeight: '500',
     color: '#FFFFFF',
-    width: '60%',
+    width: '55%',
     textAlign: 'right',
   },
   button: {
     marginTop: 12,
     borderRadius: 8,
     paddingVertical: 12,
-    backgroundColor: '#007AFF',
+    backgroundColor: '#00674F',
     alignItems: 'center',
   },
   buttonText: {

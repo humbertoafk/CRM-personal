@@ -1,7 +1,6 @@
 import { ContactModel } from '../models/contactModel';
 import { Contact } from '../../domain/entities/contact';
 
-// mapear (convertir de modelo a entidad)
 export function mapContactModelToEntity(model: ContactModel): Contact {
   return {
     id: model.id ?? '',
@@ -15,9 +14,6 @@ export function mapContactModelToEntity(model: ContactModel): Contact {
   };
 }
 
-//este es para transofrmar de entidad a modelo, en el caso de agregar y editar
-// porqu lo toman de forma procesada como viene de presnetacion y 
-//lo transformar a como lo espera expo-contacts
 export function mapEntityToContactModel(entity: Contact): ContactModel {
   return {
     id: entity.id,
@@ -28,6 +24,6 @@ export function mapEntityToContactModel(entity: Contact): ContactModel {
     imageUri: entity.imageUri ?? 'https://example.com/default-image.png',
     isFavorite: entity.isFavorite ?? false,
     lookupKey: entity.lookupKey ?? '',
-    imageAvailable: !!entity.imageUri, // Puedes ponerlo así si lo quieres calculado
+    imageAvailable: !!entity.imageUri,
   };
 }

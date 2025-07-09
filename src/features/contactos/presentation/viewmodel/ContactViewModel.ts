@@ -43,7 +43,7 @@ export const ContactViewModel = () => {
   try {
     const result = await getContactByIdUseCase.execute(id);
     setSelectedContact(result);
-    return result; // 👈 esto es importante
+    return result;
   } catch (err) {
     setError('Error al obtener el contacto.');
     return null;

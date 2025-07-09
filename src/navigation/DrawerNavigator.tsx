@@ -22,7 +22,7 @@ export default function DrawerNavigation() {
             initialRouteName="index"
             screenOptions={{
                 headerStyle: {
-                    backgroundColor: '#1E1E', 
+                    backgroundColor: '#03DAC6', 
                 },
                 headerStatusBarHeight: 0, 
                 headerTintColor: '#1E1E1E', 

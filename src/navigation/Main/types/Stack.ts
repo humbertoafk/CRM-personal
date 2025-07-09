@@ -5,5 +5,4 @@ export type StackParamList = {
     settings: undefined; 
 };
 
-// Tipo global 
 export type StackNavProp = NativeStackNavigationProp<StackParamList>;

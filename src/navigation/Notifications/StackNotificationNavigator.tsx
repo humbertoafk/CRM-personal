@@ -1,4 +1,3 @@
-//para crear un stack a diferencia del drawer se usa este
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { StackNotificationsParamsList } from "./types/types";
 import NotificationListScreen from "../../features/notifications/presentation/NotificationList";
